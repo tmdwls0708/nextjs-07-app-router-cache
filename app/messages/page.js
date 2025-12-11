@@ -9,7 +9,7 @@ import { unstable_noStore } from "next/cache";
 // 페이지 라우트도 캐시하지 않음 (페이지 접속할 때마다 렌더링 됨)
 // export const dynamic = "force-dynamic";
 
-export default function MessagesPage() {
+export default async function MessagesPage() {
   // 컴포넌트 범위 요청 캐시 설정하지 않음
   // unstable_noStore();
 
@@ -25,7 +25,7 @@ export default function MessagesPage() {
   // });
   // const messages = await response.json();
 
-  const messages = getMessages();
+  const messages = await getMessages();
 
   if (!messages || messages.length === 0) {
     return <p>No messages found</p>;

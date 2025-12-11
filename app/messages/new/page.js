@@ -16,7 +16,7 @@ export default function NewMessagePage() {
       tags: ["nextTag"],
     },
      */
-    // revalidateTag("nextTag");
+    revalidateTag("msg");
     redirect("/messages");
   }
 
