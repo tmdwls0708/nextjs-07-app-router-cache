@@ -1,14 +1,23 @@
-import { redirect } from 'next/navigation';
+import { redirect } from "next/navigation";
 
-import { addMessage } from '@/lib/messages';
+import { addMessage } from "@/lib/messages";
+import { revalidatePath, revalidateTag } from "next/cache";
 
 export default function NewMessagePage() {
   async function createMessage(formData) {
-    'use server';
+    "use server";
 
-    const message = formData.get('message');
-    addMessage(message);
-    redirect('/messages');
+    const message = formData.get("message");
+    // addMessage(message);
+    // 전체 페이지 하위 페이지 모드 재빌드
+    // revalidatePath("/", "layout");
+    /** fetch 함수 옵션으로 태그 설정
+      next: {
+      tags: ["nextTag"],
+    },
+     */
+    revalidateTag("nextTag");
+    redirect("/messages");
   }
 
   return (
