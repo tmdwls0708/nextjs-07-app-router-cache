@@ -8,7 +8,7 @@ export default function NewMessagePage() {
     "use server";
 
     const message = formData.get("message");
-    // addMessage(message);
+    addMessage(message);
     // 전체 페이지 하위 페이지 모드 재빌드
     // revalidatePath("/", "layout");
     /** fetch 함수 옵션으로 태그 설정
@@ -16,7 +16,7 @@ export default function NewMessagePage() {
       tags: ["nextTag"],
     },
      */
-    revalidateTag("nextTag");
+    // revalidateTag("nextTag");
     redirect("/messages");
   }
 
